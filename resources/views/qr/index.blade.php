@@ -1,5 +1,33 @@
 @extends('layouts.app')
+@section('css')
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Uzyskaj odwołanie do pola opisu
+            var descriptionField = document.querySelector('textarea[name="description"]');
+            
+            // Utwórz element do wyświetlania liczby znaków
+            var characterCount = document.createElement('p');
+            characterCount.innerHTML = 'Pozostało znaków: 255';
+            
+            // Dodaj element do DOM
+            descriptionField.parentNode.appendChild(characterCount);
 
+            // Dodaj nasłuchiwanie na zmiany w polu opisu
+            descriptionField.addEventListener('input', function () {
+                var remainingCharacters = 255 - descriptionField.value.length;
+                characterCount.innerHTML = 'Pozostało znaków: ' + remainingCharacters;
+            });
+        });
+    </script>
+
+<script>
+    function showLoadingMessage() {
+        // Pokaż komunikat oczekiwania
+        document.getElementById('loading-message').style.display = 'block';
+    }
+</script>
+
+@endsection
 @section('content')
 
 <style>
@@ -41,9 +69,14 @@
 
 
 </center>
+<div id="loading-message" class="text-center" style="display: none;">
+    <p>Trwa przetwarzanie danych...</p>
+    <img src="load.gif" alt="Loading" width="50" height="50">
+</div>
+
 <div class="card-body">
 
-<form action="{{url('/test')}}" method="POST" enctype="multipart/form-data">
+<form action="{{url('/test')}}" method="POST" enctype="multipart/form-data" onsubmit="showLoadingMessage()">
 @csrf
 <div class = "form-group mb-3">
 <label for="image">Zdjęcie:</label>
@@ -58,7 +91,7 @@
 
 <div class = "form-group mb-3">
 <label for="description">Wiadomość:</label>
-<textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" required autocomplete="description"></textarea>
+<input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" required autocomplete="description"></input>
 @error('description')
 <span class="invalid-feedback" role="alert">
 <strong>{{ $message }}</strong>
