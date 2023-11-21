@@ -103,6 +103,12 @@ return [
     |
     */
 
-    'attributes' => [],
+       'attributes' => [
+        'image' => 'Zdjęcie',
+        'description' => 'Wiadomość',
+        'name' => 'Podpis'
+
+
+    ]
 
 ];
