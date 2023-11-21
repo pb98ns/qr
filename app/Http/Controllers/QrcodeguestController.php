@@ -22,10 +22,10 @@ class QrcodeguestController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+$request->validate([
             'name' => ['required', 'max:255'],
             'description' => ['required','max:255'],
-            'image' => ['required','max:20480'],
+            'image' => ['required','max:40960','mimes:jpeg,jpg,png,heic'],
         
     ]);
     $file=$request->file('image');
