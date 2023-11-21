@@ -3,7 +3,7 @@
 <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Uzyskaj odwołanie do pola opisu
-            var descriptionField = document.querySelector('textarea[name="description"]');
+            var descriptionField = document.querySelector('input[name="description"]');
             
             // Utwórz element do wyświetlania liczby znaków
             var characterCount = document.createElement('p');
@@ -53,11 +53,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-    @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+   
         <div class="col-md-8">
       
             <div class="card">
@@ -73,7 +69,11 @@
     <p>Trwa przetwarzanie danych...</p>
     <img src="load.gif" alt="Loading" width="50" height="50">
 </div>
-
+ @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <div class="card-body">
 
 <form action="{{url('/test')}}" method="POST" enctype="multipart/form-data" onsubmit="showLoadingMessage()">
