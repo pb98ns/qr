@@ -58,9 +58,8 @@ class QrcodeController extends Controller
     ->where('qrcodes.usertask_id', '=', $id)
     ->get();
 
-    $event3 = DB::table('qrcodes')
-    ->join('user_task','qrcodes.usertask_id','=','user_task.id')
-    ->select('user_task.*', 'qrcodes.*') 
+    $event3 =Qrcode::join('user_task','qrcodes.usertask_id','=','user_task.id')->join('users','user_task.user_id','=','users.id')
+    ->select('user_task.*', 'qrcodes.*','users.guest_url') 
     ->where('user_task.id', '=', $id)
     ->get();
 
