@@ -89,6 +89,8 @@
       <th scope="col">Data</th>
       <th scope="col">Przypisany użytkownik</th>
       <th scope="col">Ścieżka URL dla gości</th>
+    <th scope="col">ID wydarzenia</th>
+
       <th scope="col">Usuń</th>
 
 
@@ -105,6 +107,7 @@
       <td class="table-row"><b>{{$zlecenia->task->date}}</b></td>
       <td class="table-row"><b>{{$zlecenia->user->name}} {{$zlecenia->user->surname}}</b></td>
       <td class="table-row"><b><a href='/{{$zlecenia->user->guest_url}}'>127.0.0.1:8000/{{$zlecenia->user->guest_url}}</a></b></td>
+      <td class="table-row"><b>{{$zlecenia->id}}</b></td>
 
 
     <td class="table-row">
