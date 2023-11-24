@@ -68,8 +68,7 @@
   <tbody>
   @foreach($event3 as $items)
     <tr>
-      <td> <img src="/uploads/test/{{$items->image}}" class="img img-responsive text-center" /></td>
-     
+<td> <img src="/uploads/{{$items->user->guest_url}}/{{$items->image}}" class="img img-responsive text-center" /></td>     
     </tr>
 
 
