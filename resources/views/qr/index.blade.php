@@ -60,7 +60,7 @@
                 <center>
                
                <h3> <div class="card-header">{{ __('Anna & Piotr') }}</div></h3>
-               <img class="img-fluid mx-auto d-block" src="/test.png" alt="" width="95" height="105">
+               <img class="img-fluid mx-auto d-block" src="/start_image/test.png" alt="" width="95" height="105">
                <h3> <div class="card-header">{{ __('18.11.2023 r.') }}</div></h3>
 
 
